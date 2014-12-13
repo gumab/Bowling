@@ -1,6 +1,6 @@
 // @SOURCE:/Users/guma/Bowling/conf/routes
-// @HASH:21cd451bd871623c62e82db510b1701c599ad21b
-// @DATE:Sun Dec 14 00:20:28 KST 2014
+// @HASH:956dba813b2f20a5be66a6a485b335922b69d9db
+// @DATE:Sun Dec 14 02:09:01 KST 2014
 
 package controllers;
 

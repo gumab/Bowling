@@ -1,4 +1,4 @@
-
+@(isBonus:Boolean,cnt:Int)
 
 <!DOCTYPE html>
 <html>
@@ -20,13 +20,60 @@
 	<body>
 		<div class="container">
       <!-- Static navbar -->
-     @Navbar("Score")
+     @Navbar("Game")
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>
+        <h1>Gameboard</h1>
+        <table class="table-bordered" style="margin-bottom:50px;width:@(cnt*9.5238)%">
+        	<tr>
+        		@for(i <- 1 to cnt if i<10){
+        		<td style="padding:0;width:9.5%">
+        			<table class="table" style="margin:0">
+		        	<tr>
+		        		<td class="table" style="border:0;width:50%;padding:0" align="center">
+        					<font size="3">10</font>
+        				</td>
+        				<td class="warning" style="border:0;width:50%;padding:0" align="center">
+		        			<font size="3">X</font>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td class="table" align="center" colspan="2" style="padding:0;border:0">
+        					<font size="3">300</font>
+        				</td>
+        			</tr>
+        			</table>
+        		</td>
+        	}@if(cnt>9){
+        		<td style="padding:0;width:@("14.2857%".when(isBonus))@("9.5238%".when(!isBonus))">
+        			<table class="table" style="margin:0">
+		        	<tr>
+		        		<td class="table" style="border:0;width:33%;padding:0" align="center">
+        					<font size="3">10</font>
+        				</td>
+        				<td class="warning" style="border:0;width:33%;padding:0" align="center">
+		        			<font size="3">X</font>
+        				</td>
+        				@if(isBonus){
+        				<td class="danger" style="border:0;width:33%;padding:0" align="center">
+		        			<font size="3">X</font>
+        				</td>
+        				}
+        			</tr>
+        			<tr>
+        				<td class="table" align="center" colspan="3" style="padding:0;border:0">
+        					<font size="3">300</font>
+        				</td>
+        			</tr>
+        			</table>
+        		</td>
+        	}
+        	</tr>
+        </table>
+        
+
+
           <a class="btn btn-lg btn-primary" href="../../components/#navbar">View navbar docs &raquo;</a>
         </p>
       </div>

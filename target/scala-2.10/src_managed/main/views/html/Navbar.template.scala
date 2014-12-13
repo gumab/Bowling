@@ -32,14 +32,14 @@ Seq[Any](format.raw/*1.14*/("""
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             
-            <li class=""""),_display_(Seq[Any](/*14.25*/("active".when(nav == "Score")))),format.raw/*14.56*/(""""><a href="/bowling">Scoreboard</a></li>
+            <li class=""""),_display_(Seq[Any](/*14.25*/("active".when(nav == "Game")))),format.raw/*14.55*/(""""><a href="/bowling">Gameboard</a></li>
             <li class=""""),_display_(Seq[Any](/*15.25*/("active".when(nav == "Rule")))),format.raw/*15.55*/(""""><a href="/rule">Game rule</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My menu <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My menu <span class="glyphicon glyphicon-user"/> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li class=""""),_display_(Seq[Any](/*21.29*/("active".when(nav == "History")))),format.raw/*21.62*/(""""><a href="#">Game history</a></li>
+                <li class=""""),_display_(Seq[Any](/*21.29*/("active".when(nav == "History")))),format.raw/*21.62*/(""""><a href="history">Game history</a></li>
                 <li><a href="#">Sign Out</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Account setting</li>
@@ -61,10 +61,10 @@ Seq[Any](format.raw/*1.14*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sun Dec 14 00:23:51 KST 2014
+                    DATE: Sun Dec 14 00:48:24 KST 2014
                     SOURCE: /Users/guma/Bowling/app/views/Navbar.scala.html
-                    HASH: f7f88c1f170226f9d4824b4b78e5ee2647cf5f0b
-                    MATRIX: 557->1|663->13|1068->383|1082->389|1140->426|1363->613|1416->644|1517->709|1569->739|1919->1053|1974->1086
+                    HASH: 53b84bc2d533355d90c9eedd73df027694a4d47f
+                    MATRIX: 557->1|663->13|1068->383|1082->389|1140->426|1363->613|1415->643|1515->707|1567->737|1958->1092|2013->1125
                     LINES: 19->1|22->1|30->9|30->9|30->9|35->14|35->14|36->15|36->15|42->21|42->21
                     -- GENERATED --
                 */

@@ -1,6 +1,6 @@
 // @SOURCE:/Users/guma/Bowling/conf/routes
-// @HASH:21cd451bd871623c62e82db510b1701c599ad21b
-// @DATE:Sun Dec 14 00:20:28 KST 2014
+// @HASH:956dba813b2f20a5be66a6a485b335922b69d9db
+// @DATE:Sun Dec 14 02:09:01 KST 2014
 
 
 import play.core._
@@ -51,7 +51,11 @@ private[this] lazy val controllers_Application_bowling4 = Route("GET", PathPatte
 // @LINE:14
 private[this] lazy val controllers_Application_rule5 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("rule"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """signIn""","""controllers.Application.signIn"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """signUp""","""controllers.Application.signUp"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """bowling""","""controllers.Application.bowling"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """rule""","""controllers.Application.rule""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+
+// @LINE:15
+private[this] lazy val controllers_Application_history6 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("history"))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.Application.index"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """signIn""","""controllers.Application.signIn(iid:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """signUp""","""controllers.Application.signUp"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """bowling""","""controllers.Application.bowling"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """rule""","""controllers.Application.rule"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """history""","""controllers.Application.history""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -77,8 +81,8 @@ case controllers_Assets_at1(params) => {
 
 // @LINE:11
 case controllers_Application_signIn2(params) => {
-   call { 
-        invokeHandler(controllers.Application.signIn, HandlerDef(this, "controllers.Application", "signIn", Nil,"GET", """""", Routes.prefix + """signIn"""))
+   call(params.fromQuery[Int]("iid", None)) { (iid) =>
+        invokeHandler(controllers.Application.signIn(iid), HandlerDef(this, "controllers.Application", "signIn", Seq(classOf[Int]),"GET", """""", Routes.prefix + """signIn"""))
    }
 }
         
@@ -103,6 +107,14 @@ case controllers_Application_bowling4(params) => {
 case controllers_Application_rule5(params) => {
    call { 
         invokeHandler(controllers.Application.rule, HandlerDef(this, "controllers.Application", "rule", Nil,"GET", """""", Routes.prefix + """rule"""))
+   }
+}
+        
+
+// @LINE:15
+case controllers_Application_history6(params) => {
+   call { 
+        invokeHandler(controllers.Application.history, HandlerDef(this, "controllers.Application", "history", Nil,"GET", """""", Routes.prefix + """history"""))
    }
 }
         

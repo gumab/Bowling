@@ -13,13 +13,15 @@ import play.api.mvc._
 import play.api.data._
 import views.html._
 /**/
-object BowlingPage extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template0[play.api.templates.HtmlFormat.Appendable] {
+object BowlingPage extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template2[Boolean,Int,play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply():play.api.templates.HtmlFormat.Appendable = {
+    def apply/*1.2*/(isBonus:Boolean,cnt:Int):play.api.templates.HtmlFormat.Appendable = {
         _display_ {
 
-Seq[Any](format.raw/*3.1*/("""<!DOCTYPE html>
+Seq[Any](format.raw/*1.27*/("""
+
+<!DOCTYPE html>
 <html>
 	<head>
 		
@@ -37,17 +39,62 @@ Seq[Any](format.raw/*3.1*/("""<!DOCTYPE html>
 		<title>Signin Page</title>
 	</head>
 	<body>
-	
-
 		<div class="container">
       <!-- Static navbar -->
-     """),_display_(Seq[Any](/*25.7*/Navbar("Score"))),format.raw/*25.22*/("""
+     """),_display_(Seq[Any](/*23.7*/Navbar("Game"))),format.raw/*23.21*/("""
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>
+        <h1>Gameboard</h1>
+        <table class="table-bordered" style="margin-bottom:50px;width:"""),_display_(Seq[Any](/*28.72*/(cnt*9.5238))),format.raw/*28.84*/("""%">
+        	<tr>
+        		"""),_display_(Seq[Any](/*30.12*/for(i <- 1 to cnt if i<10) yield /*30.38*/{_display_(Seq[Any](format.raw/*30.39*/("""
+        		<td style="padding:0;width:9.5%">
+        			<table class="table" style="margin:0">
+		        	<tr>
+		        		<td class="table" style="border:0;width:50%;padding:0" align="center">
+        					<font size="3">10</font>
+        				</td>
+        				<td class="warning" style="border:0;width:50%;padding:0" align="center">
+		        			<font size="3">X</font>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td class="table" align="center" colspan="2" style="padding:0;border:0">
+        					<font size="3">300</font>
+        				</td>
+        			</tr>
+        			</table>
+        		</td>
+        	""")))})),_display_(Seq[Any](/*48.12*/if(cnt>9)/*48.21*/{_display_(Seq[Any](format.raw/*48.22*/("""
+        		<td style="padding:0;width:"""),_display_(Seq[Any](/*49.39*/("14.2857%".when(isBonus)))),_display_(Seq[Any](/*49.66*/("9.5238%".when(!isBonus)))),format.raw/*49.92*/("""">
+        			<table class="table" style="margin:0">
+		        	<tr>
+		        		<td class="table" style="border:0;width:33%;padding:0" align="center">
+        					<font size="3">10</font>
+        				</td>
+        				<td class="warning" style="border:0;width:33%;padding:0" align="center">
+		        			<font size="3">X</font>
+        				</td>
+        				"""),_display_(Seq[Any](/*58.14*/if(isBonus)/*58.25*/{_display_(Seq[Any](format.raw/*58.26*/("""
+        				<td class="danger" style="border:0;width:33%;padding:0" align="center">
+		        			<font size="3">X</font>
+        				</td>
+        				""")))})),format.raw/*62.14*/("""
+        			</tr>
+        			<tr>
+        				<td class="table" align="center" colspan="3" style="padding:0;border:0">
+        					<font size="3">300</font>
+        				</td>
+        			</tr>
+        			</table>
+        		</td>
+        	""")))})),format.raw/*71.11*/("""
+        	</tr>
+        </table>
+        
+
+
           <a class="btn btn-lg btn-primary" href="../../components/#navbar">View navbar docs &raquo;</a>
         </p>
       </div>
@@ -64,20 +111,20 @@ Seq[Any](format.raw/*3.1*/("""<!DOCTYPE html>
 """))}
     }
     
-    def render(): play.api.templates.HtmlFormat.Appendable = apply()
+    def render(isBonus:Boolean,cnt:Int): play.api.templates.HtmlFormat.Appendable = apply(isBonus,cnt)
     
-    def f:(() => play.api.templates.HtmlFormat.Appendable) = () => apply()
+    def f:((Boolean,Int) => play.api.templates.HtmlFormat.Appendable) = (isBonus,cnt) => apply(isBonus,cnt)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Sun Dec 14 00:17:08 KST 2014
+                    DATE: Sun Dec 14 02:28:53 KST 2014
                     SOURCE: /Users/guma/Bowling/app/views/BowlingPage.scala.html
-                    HASH: 734d774f2bf6e1d5e20123c871a7c29f1e0020a1
-                    MATRIX: 643->2|957->280|972->286|1032->323|1121->376|1136->382|1197->421|1268->456|1283->462|1341->498|1396->517|1411->523|1478->568|1565->619|1580->625|1644->667|1824->812|1861->827
-                    LINES: 22->3|32->13|32->13|32->13|33->14|33->14|33->14|34->15|34->15|34->15|35->16|35->16|35->16|36->17|36->17|36->17|44->25|44->25
+                    HASH: 6fd848e1bfb217a6509159f9a78653452f468b2c
+                    MATRIX: 567->1|686->26|1002->306|1017->312|1077->349|1166->402|1181->408|1242->447|1313->482|1328->488|1386->524|1441->543|1456->549|1523->594|1610->645|1625->651|1689->693|1866->835|1902->849|2148->1059|2182->1071|2247->1100|2289->1126|2328->1127|2997->1756|3015->1765|3054->1766|3129->1805|3186->1832|3234->1858|3631->2219|3651->2230|3690->2231|3875->2384|4146->2623
+                    LINES: 19->1|22->1|34->13|34->13|34->13|35->14|35->14|35->14|36->15|36->15|36->15|37->16|37->16|37->16|38->17|38->17|38->17|44->23|44->23|49->28|49->28|51->30|51->30|51->30|69->48|69->48|69->48|70->49|70->49|70->49|79->58|79->58|79->58|83->62|92->71
                     -- GENERATED --
                 */
             

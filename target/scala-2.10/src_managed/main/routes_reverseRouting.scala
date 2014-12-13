@@ -1,6 +1,6 @@
 // @SOURCE:/Users/guma/Bowling/conf/routes
-// @HASH:21cd451bd871623c62e82db510b1701c599ad21b
-// @DATE:Sun Dec 14 00:20:28 KST 2014
+// @HASH:956dba813b2f20a5be66a6a485b335922b69d9db
+// @DATE:Sun Dec 14 02:09:01 KST 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,6 +13,7 @@ import play.api.mvc._
 import Router.queryString
 
 
+// @LINE:15
 // @LINE:14
 // @LINE:13
 // @LINE:12
@@ -34,6 +35,7 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:15
 // @LINE:14
 // @LINE:13
 // @LINE:12
@@ -41,6 +43,12 @@ def at(file:String): Call = {
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:11
+def signIn(iid:Int): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "signIn" + queryString(List(Some(implicitly[QueryStringBindable[Int]].unbind("iid", iid)))))
+}
+                                                
 
 // @LINE:12
 def signUp(): Call = {
@@ -54,15 +62,15 @@ def bowling(): Call = {
 }
                                                 
 
-// @LINE:6
-def index(): Call = {
-   Call("GET", _prefix)
+// @LINE:15
+def history(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "history")
 }
                                                 
 
-// @LINE:11
-def signIn(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "signIn")
+// @LINE:6
+def index(): Call = {
+   Call("GET", _prefix)
 }
                                                 
 
@@ -78,6 +86,7 @@ def rule(): Call = {
                   
 
 
+// @LINE:15
 // @LINE:14
 // @LINE:13
 // @LINE:12
@@ -104,6 +113,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:15
 // @LINE:14
 // @LINE:13
 // @LINE:12
@@ -111,6 +121,17 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:11
+def signIn : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.signIn",
+   """
+      function(iid) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "signIn" + _qS([(""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("iid", iid)])})
+      }
+   """
+)
+                        
 
 // @LINE:12
 def signUp : JavascriptReverseRoute = JavascriptReverseRoute(
@@ -134,23 +155,23 @@ def bowling : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
+// @LINE:15
+def history : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.history",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "history"})
+      }
+   """
+)
+                        
+
 // @LINE:6
 def index : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.index",
    """
       function() {
       return _wA({method:"GET", url:"""" + _prefix + """"})
-      }
-   """
-)
-                        
-
-// @LINE:11
-def signIn : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.signIn",
-   """
-      function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "signIn"})
       }
    """
 )
@@ -173,6 +194,7 @@ def rule : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
+// @LINE:15
 // @LINE:14
 // @LINE:13
 // @LINE:12
@@ -195,6 +217,7 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:15
 // @LINE:14
 // @LINE:13
 // @LINE:12
@@ -202,6 +225,12 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:11
+def signIn(iid:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.signIn(iid), HandlerDef(this, "controllers.Application", "signIn", Seq(classOf[Int]), "GET", """""", _prefix + """signIn""")
+)
+                      
 
 // @LINE:12
 def signUp(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
@@ -215,15 +244,15 @@ def bowling(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:6
-def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Seq(), "GET", """ Home page""", _prefix + """""")
+// @LINE:15
+def history(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.history(), HandlerDef(this, "controllers.Application", "history", Seq(), "GET", """""", _prefix + """history""")
 )
                       
 
-// @LINE:11
-def signIn(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.signIn(), HandlerDef(this, "controllers.Application", "signIn", Seq(), "GET", """""", _prefix + """signIn""")
+// @LINE:6
+def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Seq(), "GET", """ Home page""", _prefix + """""")
 )
                       
 

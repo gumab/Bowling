@@ -10,13 +10,18 @@ object Application extends Controller {
     Ok(views.html.SignInPage())
   }
 
-  def signIn = Action {
+  def signIn(iid:Int) = Action {
   	
-  	Ok(views.html.BowlingPage())
+  	var isBonus=false
+
+  	if(iid==11){
+  		isBonus=true
+  	}
+  	Ok(views.html.BowlingPage(isBonus,iid))
   }
 
   def bowling = Action {
-  	Ok(views.html.BowlingPage())
+  	Ok(views.html.BowlingPage(true,10))
   }
 
   def signUp = Action {
@@ -24,6 +29,9 @@ object Application extends Controller {
   }
   def rule = Action {
   	Ok(views.html.Rule())
+  }
+  def history=Action{
+  	Ok(views.html.History())
   }
 
 }

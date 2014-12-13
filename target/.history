@@ -1,0 +1,12 @@
+run
+eclipse
+run
+eclipse
+eclipse with-source=true
+run
+run 80
+run 88
+run 89
+run
+exit
+run

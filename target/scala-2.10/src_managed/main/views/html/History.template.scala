@@ -43,11 +43,14 @@ Seq[Any](format.raw/*3.1*/("""<!DOCTYPE html>
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>History</h1>
-        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar">View navbar docs &raquo;</a>
-        </p>
+        """),_display_(Seq[Any](/*27.10*/FinishedTable(true,"0123012301230123012XX"))),format.raw/*27.53*/("""
+        """),_display_(Seq[Any](/*28.10*/FinishedTable(false,"0123012301230123012X"))),format.raw/*28.53*/("""
+        """),_display_(Seq[Any](/*29.10*/FinishedTable(false,"0123012301230123012X"))),format.raw/*29.53*/("""
+        """),_display_(Seq[Any](/*30.10*/FinishedTable(false,"0123012301230123012X"))),format.raw/*30.53*/("""
+        """),_display_(Seq[Any](/*31.10*/FinishedTable(true,"0123012301230123012XX"))),format.raw/*31.53*/("""
+        """),_display_(Seq[Any](/*32.10*/FinishedTable(true,"0123012301230123012XX"))),format.raw/*32.53*/("""
+        """),_display_(Seq[Any](/*33.10*/FinishedTable(true,"0123012301230123012XX"))),format.raw/*33.53*/("""
+        
       </div>
 
     </div> <!-- /container -->
@@ -71,11 +74,11 @@ Seq[Any](format.raw/*3.1*/("""<!DOCTYPE html>
 }
                 /*
                     -- GENERATED --
-                    DATE: Sun Dec 14 00:44:44 KST 2014
+                    DATE: Sun Dec 14 11:00:21 KST 2014
                     SOURCE: /Users/guma/Bowling/app/views/History.scala.html
-                    HASH: 208b1bf5ea7524098c646c7741d4ade9a2125c40
-                    MATRIX: 639->2|953->280|968->286|1028->323|1117->376|1132->382|1193->421|1264->456|1279->462|1337->498|1392->517|1407->523|1474->568|1561->619|1576->625|1640->667|1817->809|1856->826
-                    LINES: 22->3|32->13|32->13|32->13|33->14|33->14|33->14|34->15|34->15|34->15|35->16|35->16|35->16|36->17|36->17|36->17|42->23|42->23
+                    HASH: 0451198586c536073d3ee739fab0d3c04f16d138
+                    MATRIX: 639->2|953->280|968->286|1028->323|1117->376|1132->382|1193->421|1264->456|1279->462|1337->498|1392->517|1407->523|1474->568|1561->619|1576->625|1640->667|1817->809|1856->826|2013->947|2078->990|2124->1000|2189->1043|2235->1053|2300->1096|2346->1106|2411->1149|2457->1159|2522->1202|2568->1212|2633->1255|2679->1265|2744->1308
+                    LINES: 22->3|32->13|32->13|32->13|33->14|33->14|33->14|34->15|34->15|34->15|35->16|35->16|35->16|36->17|36->17|36->17|42->23|42->23|46->27|46->27|47->28|47->28|48->29|48->29|49->30|49->30|50->31|50->31|51->32|51->32|52->33|52->33
                     -- GENERATED --
                 */
             

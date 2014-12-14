@@ -1,6 +1,6 @@
 // @SOURCE:/Users/guma/Bowling/conf/routes
-// @HASH:956dba813b2f20a5be66a6a485b335922b69d9db
-// @DATE:Sun Dec 14 02:09:01 KST 2014
+// @HASH:01ea419bb723e10358eab03c701697cd6461b7c1
+// @DATE:Sun Dec 14 03:07:47 KST 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -45,8 +45,8 @@ class ReverseApplication {
     
 
 // @LINE:11
-def signIn(iid:Int): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "signIn" + queryString(List(Some(implicitly[QueryStringBindable[Int]].unbind("iid", iid)))))
+def signIn(th:String): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "signIn" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("th", th)))))
 }
                                                 
 
@@ -126,8 +126,8 @@ class ReverseApplication {
 def signIn : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.signIn",
    """
-      function(iid) {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "signIn" + _qS([(""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("iid", iid)])})
+      function(th) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "signIn" + _qS([(""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("th", th)])})
       }
    """
 )
@@ -227,8 +227,8 @@ class ReverseApplication {
     
 
 // @LINE:11
-def signIn(iid:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.signIn(iid), HandlerDef(this, "controllers.Application", "signIn", Seq(classOf[Int]), "GET", """""", _prefix + """signIn""")
+def signIn(th:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.signIn(th), HandlerDef(this, "controllers.Application", "signIn", Seq(classOf[String]), "GET", """""", _prefix + """signIn""")
 )
                       
 

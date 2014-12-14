@@ -1,6 +1,13 @@
-@(isBonus:Boolean,cnt:Int)
+@(isBonus:Boolean,cnt:Int,throws:String,numRange:Int)
 
 <!DOCTYPE html>
+
+<script language="javascript">
+function btn_click(b_id){
+	document.dis.value=b_id;
+}
+</script>
+
 <html>
 	<head>
 		
@@ -15,7 +22,7 @@
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/navbar.css")">
 		<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
 		<script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
-		<title>Signin Page</title>
+		<title>Bowling Page</title>
 	</head>
 	<body>
 		<div class="container">
@@ -24,53 +31,18 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Gameboard</h1>
-        <table class="table-bordered" style="margin-bottom:50px;width:@(cnt*9.5238)%">
-        	<tr>
-        		@for(i <- 1 to cnt if i<10){
-        		<td style="padding:0;width:9.5%">
-        			<table class="table" style="margin:0">
-		        	<tr>
-		        		<td class="table" style="border:0;width:50%;padding:0" align="center">
-        					<font size="3">10</font>
-        				</td>
-        				<td class="warning" style="border:0;width:50%;padding:0" align="center">
-		        			<font size="3">X</font>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td class="table" align="center" colspan="2" style="padding:0;border:0">
-        					<font size="3">300</font>
-        				</td>
-        			</tr>
-        			</table>
-        		</td>
-        	}@if(cnt>9){
-        		<td style="padding:0;width:@("14.2857%".when(isBonus))@("9.5238%".when(!isBonus))">
-        			<table class="table" style="margin:0">
-		        	<tr>
-		        		<td class="table" style="border:0;width:33%;padding:0" align="center">
-        					<font size="3">10</font>
-        				</td>
-        				<td class="warning" style="border:0;width:33%;padding:0" align="center">
-		        			<font size="3">X</font>
-        				</td>
-        				@if(isBonus){
-        				<td class="danger" style="border:0;width:33%;padding:0" align="center">
-		        			<font size="3">X</font>
-        				</td>
-        				}
-        			</tr>
-        			<tr>
-        				<td class="table" align="center" colspan="3" style="padding:0;border:0">
-        					<font size="3">300</font>
-        				</td>
-        			</tr>
-        			</table>
-        		</td>
-        	}
-        	</tr>
-        </table>
+      	<div align="center" class="alert alert-success alert-lg"><input type="textbox" name="dis" value="test" /></div>
+        <h3>Roll!@if(isBonus){<div align="right"><span class="badge">Bonus!!</span></div>}</h3>
+
+        <div dclass="btn-group">
+        	@for(i<-0 to 10){
+				<button onclick=btn_click('@i') class="btn btn-lg btn-default" @if(i>numRange){disabled=""}>@i</button>
+			}
+		</div>
+
+		<h3 style="margin-top:50px">Score board</h3>
+
+        @ScoreTable(isBonus,cnt,throws)
         
 
 
@@ -86,4 +58,3 @@
     <!-- Placed at the end of the document so the pages load faster -->
 	</body>
 </html>
-

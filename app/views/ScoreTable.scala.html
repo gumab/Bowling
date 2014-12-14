@@ -1,0 +1,74 @@
+@(isBonus:Boolean,cnt:Int,throws:String)
+
+<table class="table-bordered" style="margin-bottom:50px;margin-top:20px;width:@(((cnt+1)/2)*9.5)%">
+        <tr>
+        	@for(i <- 0 until cnt/2 if i<9){
+                
+        		<td style="padding:0;width:9.5%">
+        			<table class="table" style="margin:0">
+		        	<tr>
+		        		<td class="table" style="border:0;width:50%;padding:0" align="center">
+        					<font size="3">@throws.charAt(i*2)</font>
+        				</td>
+        				<td class="warning" style="border:0;width:50%;padding:0" align="center">
+		        			<font size="3">@throws.charAt(i*2+1)</font>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td class="table" align="center" colspan="2" style="padding:0;border:0">
+        					<font size="3">@(throws.charAt(i*2)+throws.charAt(i*2+1))</font>
+        				</td>
+        			</tr>
+        			</table>
+        		</td>
+        	}
+                @if(cnt%2 != 0 && cnt<18){
+                        <td style="padding:0;width:9.5%">
+                                <table class="table" style="margin:0">
+                                <tr>
+                                        <td class="table" style="border:0;width:50%;padding:0" align="center">
+                                                <font size="3">@throws.charAt(cnt-1)</font>
+                                        </td>
+                                        <td class="warning" style="border:0;width:50%;padding:0" align="center">
+                                                <font size="3"></font>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td class="table" align="center" colspan="2" style="padding:0;border:0">
+                                                <font size="3">@throws.charAt(cnt-1)</font>
+                                        </td>
+                                </tr>
+                                </table>
+                        </td>
+
+                }
+
+
+                @if(cnt>18){
+        		<td style="padding:0;width:@("14.3%".when(isBonus))@("9.5%".when(!isBonus))">
+        			<table class="table" style="margin:0">
+		        	<tr>
+		        		<td class="table" style="border:0;width:33%;padding:0" align="center">
+        					<font size="3">@throws.charAt(18)</font>
+        				</td>
+        				<td class="warning" style="border:0;width:33%;padding:0" align="center">
+                                                
+		        			<font size="3">@if(cnt>19){@throws.charAt(19)}</font>
+
+        				</td>
+        				@if(isBonus&&cnt>20){
+        				<td class="danger" style="border:0;width:33%;padding:0" align="center">
+		        			<font size="3">@throws.charAt(20)</font>
+        				</td>
+        				}
+        			</tr>
+        			<tr>
+        				<td class="table" align="center" colspan="3" style="padding:0;border:0">
+        					<font size="3">300</font>
+        				</td>
+        			</tr>
+        			</table>
+        		</td>
+        	}
+        	</tr>
+        </table>
